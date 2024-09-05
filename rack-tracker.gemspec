@@ -21,6 +21,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rack", ">= 1.4"
   spec.add_dependency "tilt", ">= 1.4"
   spec.add_dependency 'activesupport', '>= 3.0'
+  if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('3.0')
+    spec.add_dependency 'ostruct'
+  end
 
   spec.add_development_dependency 'actionpack', '>= 3.0'
   spec.add_development_dependency "bundler", ">= 1.16"
@@ -28,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.2"
   spec.add_development_dependency "capybara", "~> 2.4"
   spec.add_development_dependency "pry"
-  if RUBY_VERSION < "2.0"
+  if Gem::Version.new(RUBY_VERSION) < Gem::Version.new('2.0')
     spec.add_development_dependency "mime-types", "< 3.0"
     spec.add_development_dependency "addressable", "< 2.5"
   end
